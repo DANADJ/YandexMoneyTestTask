@@ -6,4 +6,4 @@
 2. cd YandexMoneyTestTask
 3. npm i
 4. npm run build
-5. run tesDist.js
+5. node testDist.js
