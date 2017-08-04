@@ -45,8 +45,8 @@ const Utilities = {
 	 * @throws {error} - Выбрасывает исключение если тип проверяемого аргумента "string"
 	 */
 	isString(checkedArgument){
-		if (typeof checkedArgument !== 'string') {
-			throw new Error('Передаваемый аргумент не строка. Операция отменена.');
+		if (checkedArgument.constructor !== String) {
+			throw new Error('Передаваемый аргумент не экзэмпляр типа "STRING". Операция отменена.');
 		}
 	},
 
@@ -59,8 +59,8 @@ const Utilities = {
 	 * @throws {error} - Выбрасывает исключение если проверяемый аргумент не экземпляр "object"
 	 */
 	isObject(checkedArgument){
-		if (checkedArgument === null || Array.isArray(checkedArgument) || typeof checkedArgument !== 'object') {
-			throw new Error('Передаваемый аргумент не объект. Операция отменена.');
+		if (checkedArgument.constructor !== Object) {
+			throw new Error('Передаваемый аргумент не экзэмпляр типа "OBJECT". Операция отменена.');
 		}
 	},
 
@@ -73,8 +73,8 @@ const Utilities = {
 	 * @throws {error} - Выбрасывает исключение если проверяемый аргумент не экземпляр "array"
 	 */
 	isArray(checkedArgument){
-		if (!Array.isArray(checkedArgument)) {
-			throw new Error('Передаваемый аргумент не массив. Операция отменена.');
+		if (checkedArgument.constructor !== Array) {
+			throw new Error('Передаваемый аргумент не экзэмпляр типа "ARRAY". Операция отменена.');
 		}
 	},
 
@@ -101,7 +101,7 @@ const Utilities = {
 	 * @throws {error} - Выбрасывает исключение если проверяемый аргумент не соответствует ни одному ожидаемому типу данных
 	 */
 	isMultipleTypeSearchArgument(checkedArgument){
-		if (typeof checkedArgument !== 'string' && !Array.isArray(checkedArgument) && !checkedArgument instanceof Object) {
+		if (checkedArgument.constructor !== String && checkedArgument.constructor !== Array && checkedArgument.constructor !== Object) {
 			throw new Error('Принимаемый аргумент не соответствет ни одному ожидаемому типу (string|array|object)');
 		}
 	},
